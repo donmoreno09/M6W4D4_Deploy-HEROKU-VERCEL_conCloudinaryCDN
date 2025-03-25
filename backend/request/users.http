@@ -1,0 +1,48 @@
+### Variabili d'ambiente
+@baseUrl = http://localhost:3001/users
+@userId = 67e2799a4c5183d3383549d7
+
+### GET - Ottieni tutti gli utenti
+GET {{baseUrl}}
+Content-Type: application/json
+
+### GET - Ottieni un singolo utente
+GET {{baseUrl}}/{{userId}}
+Content-Type: application/json
+
+### POST - Registrazione nuovo utente
+POST {{baseUrl}}/register
+Content-Type: application/json
+
+{
+    "firstName": "Mario",
+    "lastName": "Rossi",
+    "email": "mario.rossi@example.com",
+    "password": "password123"
+}
+
+### POST - Login utente
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+    "email": "mario.rossi@example.com",
+    "password": "password123"
+}
+
+### PUT - Aggiorna utente
+PUT {{baseUrl}}/{{userId}}
+Content-Type: application/json
+
+{
+    "firstName": "Don Angel",
+    "lastName": "Moreno",
+    "email": "don.angel@example.com",
+    "role": "Admin",
+    "currentPassword": "password123",
+    "newPassword": "nuovaPassword123"
+}
+
+### DELETE - Elimina utente
+DELETE {{baseUrl}}/{{userId}}
+Content-Type: application/json

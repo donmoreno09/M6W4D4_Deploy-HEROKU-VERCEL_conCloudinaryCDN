@@ -1,0 +1,29 @@
+@baseUrl = http://localhost:3001
+@blogId = 67e021aae931f1ce7f7e825b  # Sostituisci con un ID di blog valido
+@commentId = 67e0321fb45d3e1a2c8f9a12  # Sostituisci dopo aver creato un commento
+
+### Ottieni tutti i commenti di un blog
+GET {{baseUrl}}/blogs/{{blogId}}/comments
+
+### Ottieni un commento specifico
+GET {{baseUrl}}/blogs/{{blogId}}/comments/{{commentId}}
+
+### Crea un nuovo commento
+POST {{baseUrl}}/blogs/{{blogId}}/comments
+Content-Type: application/json
+
+{
+  "content": "Questo è un commento di test",
+  "author": "67e2775f352ad172ab5d2edf"  # Sostituisci con un ID utente valido
+}
+
+### Modifica un commento
+PUT {{baseUrl}}/blogs/{{blogId}}/comments/{{commentId}}
+Content-Type: application/json
+
+{
+  "content": "Questo è il contenuto modificato del commento"
+}
+
+### Elimina un commento
+DELETE {{baseUrl}}/blogs/{{blogId}}/comments/{{commentId}}

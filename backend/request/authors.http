@@ -1,0 +1,48 @@
+@baseUrl = http://localhost:3001
+@authorId =  67e02022e931f1ce7f7e8245
+
+###
+
+# Test GET all authors
+GET {{baseUrl}}/authors
+Content-Type: application/json
+
+###
+
+# Test GET a single author by ID
+GET {{baseUrl}}/authors/{{authorId}}
+Content-Type: application/json
+
+###
+
+# Test POST a new author
+POST {{baseUrl}}/authors
+Content-Type: application/json
+
+{
+  "name": "John",
+  "lastName": "Doe",
+  "email": "johndoe@example.com",
+  "birthday": "1990-01-01",
+  "avatar": "https://example.com/avatar.jpg"
+}
+
+###
+
+# Test PUT (update) an author by ID
+PUT {{baseUrl}}/authors/{{authorId}}
+Content-Type: application/json
+
+{
+  "name": "John Updated",
+  "lastName": "Doe Updated",
+  "email": "updatedemail@example.com",
+  "birthday": "1990-01-01",
+  "avatar": "https://example.com/updated-avatar.jpg"
+}
+
+###
+
+# Test DELETE an author by ID
+DELETE {{baseUrl}}/authors/{{authorId}}
+Content-Type: application/json

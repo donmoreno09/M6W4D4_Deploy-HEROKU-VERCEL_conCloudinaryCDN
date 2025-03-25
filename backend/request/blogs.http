@@ -1,0 +1,54 @@
+@baseUrl = http://localhost:3001
+@blogId = 67e021aae931f1ce7f7e825b      
+
+###
+
+# Test GET all blogs
+GET {{baseUrl}}/blogs
+Content-Type: application/json
+
+###
+
+# Test GET a single blog by ID
+GET {{baseUrl}}/blogs/{{blogId}}
+Content-Type: application/json
+
+###
+
+# Test POST a new blog
+POST {{baseUrl}}/blogs
+Content-Type: application/json
+
+{
+  "category": "Food",
+  "title": "5 Easy Recipes for Beginners",
+  "cover": "https://example.com/food-cover.jpg",
+  "content": "Learn how to cook 5 simple and delicious recipes that anyone can make at home.",
+  "readTime": {
+    "value": 6,
+    "unit": "minutes"
+  }
+}
+
+###
+
+# Test PUT (update) a blog by ID
+PUT {{baseUrl}}/blogs/{{blogId}}
+Content-Type: application/json
+
+{
+  "category": "Updated Technology",
+  "title": "Updated Blog Title",
+  "cover": "https://example.com/updated-cover.jpg",
+  "content": "Updated content for the blog.",
+  "readTime": {
+    "value": 7,
+    "unit": "minutes"
+  }
+}
+
+###
+
+# Test DELETE a blog by ID
+DELETE {{baseUrl}}/blogs/{{blogId}}
+Content-Type: application/json
