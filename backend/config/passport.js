@@ -6,7 +6,7 @@ const googleStrategy = new GoogleStrategy(
     {
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: process.env.BACKEND_HOST + process.env.GOOGLE_CALLBACK_PATH , 
+        callbackURL: `${process.env.BACKEND_HOST}${process.env.GOOGLE_CALLBACK_PATH}`, 
     }, 
     async function (accessToken, refreshToken, profile, cb) {
         try {
@@ -29,7 +29,7 @@ const googleStrategy = new GoogleStrategy(
                 process.env.JWT_SECRET,
                 { expiresIn: '1h' },
                 (err, jwtToken) => {
-                    if (err) return cb(err);
+                    if (err) return cb(err); // Corretto
                     return cb(null, { user, jwtToken });
                 }
             );

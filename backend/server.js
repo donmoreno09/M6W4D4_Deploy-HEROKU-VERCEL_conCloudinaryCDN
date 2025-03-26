@@ -17,8 +17,15 @@ if (!process.env.JWT_SECRET) {
 
 const server = express(); // creato il server base
 
-server.use(cors()); // serve a risolvere i problemi di CORS quando si collega l'api con il frontend
 
+server.use(cors({
+  origin: [
+    'https://xdonmorenoepiblogs.vercel.app',  // Il tuo frontend su Vercel
+    'http://localhost:3000'  // Per lo sviluppo locale
+  ],
+  credentials: true,
+  optionsSuccessStatus: 200
+}));
 
 passport.use(googleStrategy); 
 
@@ -35,7 +42,8 @@ await mongoose
     .then(() => console.log('Database connesso'))
     .catch((err) => console.log(err));
 
-server.listen(process.env.PORT, () => {
-    // console.clear();
-    console.log('Server avviato sulla porta ' + process.env.PORT);
+const PORT = process.env.PORT || 3001;
+
+server.listen(PORT, () => {
+    console.log('Server avviato sulla porta ' + PORT);
 });

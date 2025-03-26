@@ -41,7 +41,7 @@ const Profile = () => {
       }
       
       const response = await axios.put(
-        `http://localhost:3001/users/${user._id}`, 
+        `${process.env.REACT_APP_API_BASE_URL}users/${user._id}`, 
         formDataToSend,
         {
           headers: {

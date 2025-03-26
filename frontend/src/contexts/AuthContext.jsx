@@ -26,7 +26,8 @@ export const AuthProvider = ({ children }) => {
       }
 
       try {
-        const res = await axios.get('http://localhost:3001/users/me');
+        // Modifica qui: sostituisci http://localhost:3001 con process.env.REACT_APP_API_BASE_URL
+        const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}users/me`);
         setUser(res.data);
       } catch (err) {
         console.error('Errore nel caricamento dell\'utente:', err);
@@ -59,7 +60,8 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const res = await axios.post('http://localhost:3001/users/login', { email, password });
+      // Modifica qui: sostituisci http://localhost:3001 con process.env.REACT_APP_API_BASE_URL
+      const res = await axios.post(`${process.env.REACT_APP_API_BASE_URL}users/login`, { email, password });
       
       setToken(res.data.token);
       setUser(res.data.user);
@@ -79,7 +81,8 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (userData) => {
     try {
-      const res = await axios.post('http://localhost:3001/users/register', userData);
+      // Modifica qui: sostituisci http://localhost:3001 con process.env.REACT_APP_API_BASE_URL
+      const res = await axios.post(`${process.env.REACT_APP_API_BASE_URL}users/register`, userData);
       return { success: true, data: res.data };
     } catch (err) {
       return { 
@@ -97,6 +100,9 @@ export const AuthProvider = ({ children }) => {
     delete axios.defaults.headers.common['Authorization'];
   };
 
+  // Per esportare l'isAuthenticated, poiché è usato in ProtectedRoute.jsx
+  const isAuthenticated = !!user;
+
   return (
     <AuthContext.Provider value={{ 
       user, 
@@ -105,7 +111,7 @@ export const AuthProvider = ({ children }) => {
       login, 
       logout, 
       register,
-      isAuthenticated: !!token 
+      isAuthenticated
     }}>
       {children}
     </AuthContext.Provider>
@@ -113,3 +119,5 @@ export const AuthProvider = ({ children }) => {
 };
 
 export const useAuth = () => useContext(AuthContext);
+
+export default AuthContext;

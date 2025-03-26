@@ -34,7 +34,7 @@ const Login = () => {
 
   const handleGoogleLogin = () => {
     // Reindirizza l'utente all'endpoint di autenticazione Google
-    window.location.href = 'http://localhost:3001/auths/login-google';
+    window.location.href = `${process.env.REACT_APP_API_BASE_URL}auths/login-google`;
   };
 
   return (

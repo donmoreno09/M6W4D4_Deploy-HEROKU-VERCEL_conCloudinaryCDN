@@ -25,7 +25,7 @@ const EditBlog = () => {
   const fetchBlog = useCallback(async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`http://localhost:3001/blogs/${id}`);
+      const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}blogs/${id}`);
       const blog = response.data;
       
       // Verifica se l'utente è l'autore del blog
@@ -78,7 +78,7 @@ const EditBlog = () => {
         formDataToSend.append('cover', formData.cover);
       }
 
-      await axios.put(`http://localhost:3001/blogs/${id}`, formDataToSend, {
+      await axios.put(`${process.env.REACT_APP_API_BASE_URL}blogs/${id}`, formDataToSend, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

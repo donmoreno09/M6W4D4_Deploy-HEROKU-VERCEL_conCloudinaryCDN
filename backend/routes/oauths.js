@@ -8,10 +8,10 @@ router.get("/login-google",
 );
 
 router.get("/callback-google", 
-    passport.authenticate("google", { session: false }),
+        passport.authenticate("google", { session: false }),
     (req, res) => {
-        // Reindirizza l'utente alla pagina di login con il token JWT nell'URL
-        res.redirect(`${process.env.FRONTEND_HOST}/?token=${req.user.jwtToken}`);
+        console.log("Autenticazione completata, reindirizzamento con token");
+        res.redirect(`${process.env.FRONTEND_HOST}/login?token=${req.user.jwtToken}`);
     }
 );
 

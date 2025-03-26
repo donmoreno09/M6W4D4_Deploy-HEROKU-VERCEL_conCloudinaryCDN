@@ -17,7 +17,7 @@ const BlogDetail = () => {
     const fetchBlog = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`http://localhost:3001/blogs/${id}`);
+        const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}blogs/${id}`);
         setBlog(response.data);
         setError(null);
       } catch (err) {
@@ -34,7 +34,7 @@ const BlogDetail = () => {
   const handleDelete = async () => {
     if (window.confirm('Sei sicuro di voler eliminare questo blog?')) {
       try {
-        await axios.delete(`http://localhost:3001/blogs/${id}`);
+        await axios.delete(`${process.env.REACT_APP_API_BASE_URL}blogs/${id}`);
         navigate('/my-blogs');
       } catch (err) {
         setError('Errore durante l\'eliminazione del blog');

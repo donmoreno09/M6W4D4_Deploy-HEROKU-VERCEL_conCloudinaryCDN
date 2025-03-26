@@ -15,7 +15,7 @@ const MyBlogs = () => {
       try {
         setLoading(true);
         console.log('User ID:', user._id); // Logga l'ID dell'utente loggato
-        const response = await axios.get(`http://localhost:3001/blogs/my-blogs?author=${user._id}`);
+        const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}blogs/my-blogs?author=${user._id}`);
         console.log('Response data:', response.data); // Logga la risposta del backend
         setBlogs(response.data.blogs);
       } catch (err) {

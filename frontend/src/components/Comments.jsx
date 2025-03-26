@@ -18,7 +18,7 @@ const Comments = ({ blogId }) => {
   const fetchComments = useCallback(async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`http://localhost:3001/blogs/${blogId}/comments`);
+      const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}blogs/${blogId}/comments`);
       setComments(response.data);
       setError('');
     } catch (err) {
@@ -49,7 +49,7 @@ const Comments = ({ blogId }) => {
     }
 
     try {
-      await axios.post(`http://localhost:3001/blogs/${blogId}/comments`, {
+      await axios.post(`${process.env.REACT_APP_API_BASE_URL}blogs/${blogId}/comments`, {
         content: newComment,
         author: user._id
       });
