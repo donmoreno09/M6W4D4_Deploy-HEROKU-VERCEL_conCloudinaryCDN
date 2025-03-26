@@ -10,7 +10,7 @@ const googleStrategy = new GoogleStrategy(
     }, 
     async function (accessToken, refreshToken, profile, cb) {
         try {
-            console.log("Google profile:", profile);
+            // console.log("Google profile:", profile);
             
             let user = await User.findOne({ googleId: profile.id });
 
