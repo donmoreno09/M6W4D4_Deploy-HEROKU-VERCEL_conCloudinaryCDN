@@ -42,7 +42,7 @@ const Home = () => {
 
   return (
     <Container className="mt-5">
-      <h1>Benvenuto nel Blog!</h1>
+      <h1>Benvenuto in EpiBlogs!</h1>
       {error && <Alert variant="danger">{error}</Alert>}
       <Row>
         {loading ? (
